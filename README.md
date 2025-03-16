@@ -1,4 +1,5 @@
 Crop Recommendation System 🌾🚀
+
 📌 Project Overview
 This project is a machine learning-based crop recommendation system that helps farmers and agricultural experts determine the best crop to cultivate based on soil and environmental conditions. Using various machine learning models, we identify the most suitable crop based on factors like Nitrogen (N), Phosphorus (P), Potassium (K), temperature, humidity, pH, and rainfall.
 
