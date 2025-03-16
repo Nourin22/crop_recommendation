@@ -14,9 +14,13 @@ Target: Crop Type (22 different crops including Rice, Maize, Wheat, etc.)
 📊 Data Preprocessing
 
 Checked for missing values (None found ✅)
+
 Outlier Removal using Interquartile Range (IQR) method
+
 Label Encoding 
+
 Feature Scaling using StandardScaler
+
 Data Splitting: 80% Train - 20% Test
 
 🛠️ Machine Learning Models Used:
