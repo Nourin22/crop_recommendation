@@ -21,8 +21,6 @@ Label Encoding
 
 Feature Scaling using StandardScaler
 
-Data Splitting: 80% Train - 20% Test
-
 🛠️ Machine Learning Models Used:
 
 The following models were trained and evaluated:
