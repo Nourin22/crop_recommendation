@@ -7,7 +7,6 @@ import numpy as np
 model = joblib.load('Model/rf_model.pkl')
 scaler = joblib.load('Model/scaler.pkl')
 
-# Function to add background image
 def add_bg_from_local(image_path):
     with open(image_path, "rb") as img_file:
         encoded_string = base64.b64encode(img_file.read()).decode()
@@ -60,23 +59,18 @@ def add_bg_from_local(image_path):
         """,
         unsafe_allow_html=True
     )
-
-# Set background image (Change to your image path)
 add_bg_from_local("bg.png")
 
-# Title
 st.markdown(
     "<h1 class='title'>🌾 Crop Recommendation 🌱</h1>",
     unsafe_allow_html=True
 )
 
-# Input Form Header
 st.markdown(
     "<h3 style='text-align: center; font-size: 24px; font-weight: bold; font-family: Times New Roman, serif; color: #FFFFFF;'>Enter Soil & Climate Details:</h3>",
     unsafe_allow_html=True
 )
 
-# Input Form
 col1, col2 = st.columns(2)
 
 with col1:
@@ -92,34 +86,28 @@ with col2:
 
 st.markdown("</div>", unsafe_allow_html=True)
 
-# Center the "Predict" button
 st.markdown("<br>", unsafe_allow_html=True)
 col_space1, col_btn, col_space2 = st.columns([2, 1, 2])
 
 with col_btn:
     if st.button("🔍 **Predict**"):
-        # Prepare input data for the model
+
         input_data = np.array([N, P, K, temperature, humidity, ph, rainfall])
 
-        # Label mapping
         Label_Mapping = {
             'Apple': 0, 'Banana': 1, 'Blackgram': 2, 'Chickpea': 3, 'Coconut': 4, 'Coffee': 5, 'Cotton': 6, 'Grapes': 7, 
             'Jute': 8, 'Kidneybeans': 9, 'Lentil': 10, 'Maize': 11, 'Mango': 12, 'Mothbeans': 13, 'Mungbean': 14, 
             'Muskmelon': 15, 'Orange': 16, 'Papaya': 17, 'Pigeonpeas': 18, 'Pomegranate': 19, 'Rice': 20, 'Watermelon': 21
         }
 
-        # Reverse mapping to get label from prediction
         reverse_mapping = {v: k for k, v in Label_Mapping.items()}
 
-        # Reshape and scale the input data
         input_data = input_data.reshape(1, -1) 
         scaled_data = scaler.transform(input_data)
 
-        # Make prediction
         pred = model.predict(scaled_data)[0]
         predicted_crop = reverse_mapping.get(pred, "Unknown Crop")
 
-        # Display result with enhanced styling
         st.markdown(
             f"""
             <div style="
